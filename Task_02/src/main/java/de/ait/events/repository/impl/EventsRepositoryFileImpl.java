@@ -18,7 +18,7 @@ public class EventsRepositoryFileImpl implements EventsRepository {
 
     private final String fileName;
 
-    public EventsRepositoryFileImpl(@Value("C:\\Back-end-codes\\events\\events.txt") String fileName) {
+    public EventsRepositoryFileImpl(@Value("C:\\Back-end-codes\\Back-End-Homeworks\\Task_02\\events.txt") String fileName) {
         this.fileName = fileName;
     }
     @Override
