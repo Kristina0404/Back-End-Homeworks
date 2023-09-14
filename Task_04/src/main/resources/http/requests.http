@@ -1,0 +1,14 @@
+### Получение событий
+
+GET localhost:8080/events
+
+### Добавление события
+
+POST localhost:8080/events
+Content-Type:application/json
+
+{
+"title":"Ferien",
+"startDate":"2023-07-28",
+"endDate":"2023-09-10"
+}

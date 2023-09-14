@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events</title>
+</head>
+<body>
+<h1>My Events</h1>
+<table border="1">
+    <tr>
+        <th>Title</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+    </tr>
+</table>
+<h2>Add Event</h2>
+<form id="eventForm">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required><br><br>
+
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate" required><br><br>
+
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" name="endDate" required><br><br>
+
+    <button type="submit">add event</button>
+</form>
+<script>
+    fetch('http://localhost:8080/events')
+        .then(response => response.json())
+        .then(data => {
+            const table = document.querySelector('table');
+
+            data.forEach(event => {
+                const row = table.insertRow();
+                const titleCell = row.insertCell(0);
+                const startDateCell = row.insertCell(1);
+                const endDateCell = row.insertCell(2);
+
+                titleCell.textContent = event.title;
+                startDateCell.textContent = event.startDate;
+                endDateCell.textContent = event.endDate;
+            });
+        })
+        .catch(error => console.error('Ошибка при получении данных:', error));
+</script>
+<script>
+    function sendData(event) {
+        event.preventDefault();
+
+        const formData = new FormData(document.getElementById('eventForm'));
+        const jsonData = {};
+
+        formData.forEach((value, key) => {
+            jsonData[key] = value;
+        });
+
+        fetch('http://localhost:8080/events', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(jsonData)
+        })
+            .then(response => response.json())
+            .then(data => {
+
+                const table = document.querySelector('table');
+
+                const row = table.insertRow();
+                const titleCell = row.insertCell(0);
+                const startDateCell = row.insertCell(1);
+                const endDateCell = row.insertCell(2);
+
+                titleCell.textContent = data.title;
+                startDateCell.textContent = data.startDate;
+                endDateCell.textContent = data.endDate;
+
+                document.getElementById('eventForm').reset();
+            })
+            .catch(error => console.error('Ошибка при отправке данных:', error));
+    }
+
+    document.getElementById('eventForm').addEventListener('submit', sendData);
+</script>
+
+
+</body>
+</html>
