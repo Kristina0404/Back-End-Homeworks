@@ -22,7 +22,7 @@ public class CourseDto {
     private Long id;
     @Schema(description = "Название курса",example= "Course xy")
     private String title;
-    //@Schema(description = "Описание курса",example= "description of course")
+    @Schema(description = "Описание курса",example= "description of course")
     private String description;
     @Schema(description = "Начало курса",example= "2023-01-02")
     private String beginDate;
@@ -30,7 +30,7 @@ public class CourseDto {
     private String endDate;
     @Schema(description = "Цена за  курс",example= "1000")
     private Double price;
-   // @Schema(description = "state",example = "public")
+    @Schema(description = "state",example = "public")
     private String state;
 
     public static CourseDto from(Course course){
