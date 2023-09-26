@@ -17,7 +17,7 @@ import java.util.Objects;
 
 public class Event {
 
-    @javax.persistence.Id
+@javax.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,7 +27,5 @@ public class Event {
     private LocalDate startDate;
     @Column(nullable = false,length = 10)
     private LocalDate endDate;
-
-
 
 }

@@ -2,14 +2,8 @@ package de.ait.events.repository;
 
 
 import de.ait.events.models.Event;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EventsRepository extends CrudRepository<Event> {
+public interface EventsRepository extends JpaRepository<Event,Long> {
 
-    Event findOneByTitle(String title);
-
-    Event findOneById(Long id);
-
-    void update(Event eventForUpdate);
-
-    void deleteById(Long id);
 }
