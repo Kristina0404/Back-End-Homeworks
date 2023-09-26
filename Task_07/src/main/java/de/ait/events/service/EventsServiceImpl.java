@@ -50,7 +50,9 @@ public class EventsServiceImpl implements EventsService {
 
     @Override
     public EventDto updateEvent(Long id, UpdateEventDto updateEvent) {
-        Event eventForUpdate= eventsRepository.findOneById(id);
+        Event eventForUpdate= eventsRepository.findById(id)
+                .orElseThrow(()->
+                        new RestException(HttpStatus.NOT_FOUND,"Event with id < " + id + "not found"));
         eventForUpdate.setTitle(updateEvent.getTitle());
         eventForUpdate.setStartDate(updateEvent.getStartDate());
         eventForUpdate.setEndDate(updateEvent.getEndDate());
@@ -60,7 +62,9 @@ public class EventsServiceImpl implements EventsService {
 
     @Override
     public EventDto deleteEvent(Long id) {
-        Event forDelete =eventsRepository.findOneById(id);
+        Event forDelete =eventsRepository.findById(id)
+                .orElseThrow(()->
+                        new RestException(HttpStatus.NOT_FOUND,"Event with id < " + id + "not found"));
         eventsRepository.deleteById(id);
         return from(forDelete);
     }
