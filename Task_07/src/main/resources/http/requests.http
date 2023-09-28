@@ -26,3 +26,13 @@ Content-Type: application/json
   "startDate": "2023-12-22",
   "endDate": "2024-01-06"
 }
+
+###Регистрация пользователя
+
+POST localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "email": "romanova.kristina@gmail.com",
+  "password": "Qwerty007!"
+}

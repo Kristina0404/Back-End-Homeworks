@@ -17,8 +17,8 @@ import java.util.Objects;
 
 public class Event {
 
-@javax.persistence.Id
-    @Id
+    @javax.persistence.Id
+    //@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false,length = 20)

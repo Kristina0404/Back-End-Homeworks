@@ -1,6 +1,7 @@
 package de.ait.events.controllers;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,9 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @AutoConfigureMockMvc
-@ActiveProfiles("test")
 @DisplayName("Endpoint/ Events is works: ")
+//@DisplayNameGeneration(value = DisplayNameGeneration.ReplaceUnderscores.class)
+@ActiveProfiles("test")
 class EventsIntegrationTest {
 
     @Autowired

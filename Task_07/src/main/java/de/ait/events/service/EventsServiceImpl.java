@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +23,8 @@ public class EventsServiceImpl implements EventsService {
 
     @Override
     public List<EventDto> getAllEvents() {
-      return from( eventsRepository.findAll());
+        List<Event> events = eventsRepository.findAll();
+      return from( events);
 
     }
 
@@ -56,7 +58,8 @@ public class EventsServiceImpl implements EventsService {
         eventForUpdate.setTitle(updateEvent.getTitle());
         eventForUpdate.setStartDate(updateEvent.getStartDate());
         eventForUpdate.setEndDate(updateEvent.getEndDate());
-        eventsRepository.update(eventForUpdate);
+        eventsRepository.save(eventForUpdate);
+
         return from(eventForUpdate);
     }
 
