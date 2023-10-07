@@ -1,0 +1,69 @@
+### Получение событий
+
+GET localhost:8080/api/events
+
+### Добавление события
+
+POST localhost:8080/api/events
+Content-Type:application/json
+
+{
+  "title" : "Großer Berliner Bär",
+  "startDate": "2023-11-03",
+  "endDate": "2023-11-05"
+}
+
+### Получение одного события
+
+GET localhost:8080/api/events/6
+
+### Обновление события
+ PUT localhost:8080/api/events/7
+Content-Type: application/json
+
+{
+  "title" : "Отпуск",
+  "startDate": "2023-12-22",
+  "endDate": "2024-01-06"
+}
+
+###Регистрация пользователя
+
+POST localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "email": "romanova.kristina@gmail.com",
+  "password": "Qwerty007!"
+}
+###Добавление площадки события
+POST localhost:8080/api/venues
+Content-Type: application/json
+
+{
+  "nameOfVenue": "Erika-Hess-Eisstadion",
+  "address": "10407 Berlin,Paul-Heyse Straße 25",
+  "phone": "0301234567"
+}
+###Добавление события к площадке события
+POST localhost:8080/api/venues/1/events
+Content-Type: application/json
+
+{
+"title" : "Großer Berliner Bär",
+"startDate": "2023-11-03",
+"endDate": "2023-11-05"
+}
+
+###Добавление события к площадке события
+POST localhost:8080/api/venues/1/events
+Content-Type: application/json
+
+{
+"title" : "Kleiner Berliner Bär",
+"startDate": "2024-02-23",
+"endDate": "2024-02-25"
+}
+
+### Получение всех событий на данной площадке
+GET localhost:8080/api/venues/1/events
