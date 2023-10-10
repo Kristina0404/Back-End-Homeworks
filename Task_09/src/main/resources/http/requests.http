@@ -1,0 +1,104 @@
+### Получение событий
+
+GET localhost:8080/api/events
+
+### Добавление события
+
+POST localhost:8080/api/events
+Content-Type:application/json
+
+{
+  "title" : "Großer Berliner Bär",
+  "startDate": "2023-11-03",
+  "endDate": "2023-11-05"
+}
+
+### Получение одного события
+
+GET localhost:8080/api/events/6
+
+### Обновление события
+ PUT localhost:8080/api/events/7
+Content-Type: application/json
+
+{
+  "title" : "Отпуск",
+  "startDate": "2023-12-22",
+  "endDate": "2024-01-06"
+}
+
+###Регистрация пользователя
+
+POST localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "email": "edgard.shapiro@gmail.com",
+  "password": "Qwerty009!"
+}
+###Добавление площадки события
+POST localhost:8080/api/venues
+Content-Type: application/json
+
+{
+  "nameOfVenue": "Eiswelt Stuttgart",
+  "address": "70597 Stuttgart Keßlerweg 8",
+  "phone": "071112345678"
+}
+###Добавление события к площадке события
+POST localhost:8080/api/venues/2/events
+Content-Type: application/json
+
+{
+"title" : "Heiko Fischer Pokal",
+"startDate": "2024-02-23",
+"endDate": "2024-02-25"
+}
+
+###Добавление события к площадке события
+POST localhost:8080/api/venues/1/events
+Content-Type: application/json
+
+{
+"title" : "Kleiner Berliner Bär",
+"startDate": "2024-02-23",
+"endDate": "2024-02-25"
+}
+
+###Добавление существующего мероприятия на площадку проведения
+POST localhost:8080/api/venues/1/events
+Content-Type: application/json
+
+{
+  "existsEventId": 5
+}
+
+### Получение всех событий на данной площадке
+GET localhost:8080/api/venues/1/events
+
+### Удаление мероприятия из площадки проведения мероприятия
+DELETE localhost:8080/api/venues/1/events/5
+
+### Обновление мероприятия на месте проведения этого мероприятия
+
+PUT localhost:8080/api/venues/1/events/4
+Content-Type: application/json
+
+{
+  "title" : "Großer Berliner Bär",
+  "startDate": "2023-11-02",
+  "endDate": "2023-11-05"
+}
+
+### Добавление пользователя в мероприятие
+
+POST localhost:8080/api/events/6/users
+Content-Type: application/json
+
+{
+  "userId": 3
+}
+
+###Получение всех пользователей мероприятия
+
+GET localhost:8080/api/events/4/users
